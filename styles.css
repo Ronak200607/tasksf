@@ -1,0 +1,562 @@
+/* styles.css - Responsive Layout (Fixed image bottom alignment + consistent stat positions) */
+
+/* --- Variables & Reset --- */
+* {
+  box-sizing: border-box;
+  font-family: 'Figtree', Arial, sans-serif;
+}
+:root {
+  --primary-red: #ED3655;
+  --light-pink-bg: #FFE7EB;
+  --dark-text: #20314b;
+  --shadow-color: rgba(80, 40, 80, 0.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Figtree', Arial, sans-serif;
+  background: #fff;
+  color: var(--dark-text);
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* --- Header & Navigation --- */
+header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 15px 5%; 
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo img { height: 40px; width: auto; object-fit: contain; }
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* spacing between each option */
+  margin-left: 167px; /* space before Home */
+  margin-right: 167px; /* space after FAQ */
+}
+
+.desktop-nav-links a {
+  text-decoration: none;
+  color: #343444;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.desktop-nav-links a:hover {
+  color: var(--primary-red);
+}
+
+
+.cta {
+  background: var(--primary-red);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 15px rgba(237, 54, 85, 0.4); 
+}
+.hero-title .highlight {
+  color: var(--primary-red);
+  display: inline-block;
+  background-image: url('dash.png');
+  background-size: 100% 0.5em;   /* width 100% of parent, height proportional to text */
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding-bottom: 0.6em;         /* gives space below text for dash */
+  line-height: 1.2;
+}
+
+.cta:hover { background: #dc1644; }
+
+/* --- Hide Get A Quote on mobile --- */
+@media (max-width: 980px) {
+  .header-cta { display: none; }
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  min-height: 500px;
+  background: linear-gradient(110deg, #FFBFCA 0%, var(--light-pink-bg) 100%);
+  display: flex;
+  align-items: flex-start; 
+  padding: 0 5%;
+  padding-bottom: 200px;
+}
+
+.hero-content {
+  width: 620px; 
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 133px 40px 40px 0; 
+  box-sizing: border-box;
+  align-self: flex-start;
+}
+
+.hero-title {
+  font-size: 3.2rem; 
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px; 
+  margin-top: 0; 
+  color: #20314b;
+}
+
+.hero-description {
+  max-width: 485px; 
+  font-size: 16px; 
+  line-height: 1.5; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  color: #222;
+}
+
+.highlight {
+  color: var(--primary-red);
+  padding-bottom: 2px;
+  background-image: url('dash.png');
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px; /* spacing between buttons */
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* Locate this block around line 105 in your CSS */
+/* Locate this block around line 105 in your CSS */
+.hero-buttons button {
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 25px;
+  /* FIXED: Set border width here, which is necessary for the outline button */
+  border-width: 2px;
+  font-weight: 600;
+  /* REMOVED: cursor: pointer; */ 
+  /* REMOVED: transition: all 0.2s; */ /* This was causing the animation/transition */
+}
+
+
+/* --- Hero Buttons Exact Sizes --- */
+
+.hero-buttons .outline {
+  width: 202px;
+  height: 46px;
+  background: white;
+  color: #ED3655;
+  border: 2px solid #ED3655;
+  font-weight: 600;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(237, 54, 85, 0.5); /* red glowing border */
+}
+
+.hero-buttons .filled {
+  width: 157px;
+  height: 46px;
+  background: white;
+  color: #ED3655;
+  border: 2px solid #ED3655;
+  font-weight: 600;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(237, 54, 85, 0.5); /* red glowing border */
+}
+
+/* Disable hover/click color changes */
+.hero-buttons .outline:hover,
+.hero-buttons .outline:active,
+.hero-buttons .filled:hover,
+.hero-buttons .filled:active {
+  background: white;
+  color: #ED3655;
+  border-color: #ED3655;
+  outline: none;
+}
+
+
+
+/* --- Sidebar CTA Button Fix (Around line 351) --- */
+
+/* Locate this block around line 351 in your CSS */
+.sidebar-cta {
+    /* Auto margins keep it centered and space is controlled by the .sidebar-nav-content flex property */
+    margin: 20px auto 0 auto;
+    width: 80%; 
+    padding: 18px 20px; 
+    font-size: 1.0rem; 
+    font-weight: 700;
+    border-radius: 40px; 
+    /* FIXED: This shadow must be removed to match the image's flat style */
+    /* box-shadow: 0 8px 20px rgba(237, 54, 85, 0.5); */ 
+    position: static; 
+    border: none; /* Ensure no border is applied as per the image */
+}
+
+/* --- Hero Visuals (Fixed Alignment) --- */
+.hero-visuals {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  width: 500px;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  vertical-align: bottom;
+  margin-bottom: 0;
+}
+
+/* Floating Boxes */
+.rating-box,
+.resume-count {
+  position: absolute;
+  z-index: 15;
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.rating-box {
+  bottom: 32%;
+  left: -7%;
+  height: 76px;
+  display: flex;
+  align-items: center;
+}
+
+.resume-count {
+  bottom: 8%;
+  left: 56%;
+  width: 200px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rating { display: flex; align-items: center; gap: 15px; }
+.rating-score-img { width: 50px; height: auto; }
+.rating-stars-img { width: 90px; height: auto; margin-bottom: 5px; }
+.rating-details { display: flex; flex-direction: column; align-items: flex-start; }
+.rating-details span { font-size: 0.9rem; color: #666; }
+#cap { width: 35px; height: 35px; }
+.count-details { display: flex; flex-direction: column; align-items: flex-start; }
+.count-number { font-size: 1.4rem; font-weight: 700; color: var(--primary-red); line-height: 1; }
+.count-label { font-size: 0.7rem; color: #666; white-space: nowrap; }
+
+/* --- Features Section --- */
+.features {
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.tagline-chip {
+  background-color: #FD92A44D;
+  width: 154px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin: 0 auto 20px; 
+  font-weight: 600;
+  color: var(--primary-red);
+  font-size: 0.9rem;
+}
+
+.features h2 {
+  font-size: 2.2rem; 
+  font-weight: 800;
+  color: var(--dark-text);
+  margin-bottom: 50px;
+  line-height: 1.3;
+}
+
+.highlight2 { color: var(--primary-red); padding-bottom: 2px; }
+
+.features-list {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 17px;
+  width: 250px;
+  box-shadow: 0 4px 22px 0 var(--shadow-color);
+  text-align: center;
+}
+
+.feature-item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.feature-item h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  margin-bottom: 12px;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #5a5a5a;
+}
+
+/* ------------------------------------------- */
+/* --- Mobile Sidebar (Exact Match Styling) --- */
+/* ------------------------------------------- */
+
+/* Hide desktop nav on mobile */
+@media (max-width: 980px) {
+    .desktop-nav-links { display: none !important; }
+    .header-cta { display: none; }
+    .menu-toggle { display: block; }
+}
+
+.menu-toggle { 
+    display: none; 
+    font-size: 2rem; 
+    cursor: pointer; 
+    color: var(--dark-text); 
+    padding: 5px 10px; 
+    z-index: 30; 
+}
+
+.mobile-sidebar {
+  /* Retained background color from inline style: background: #FFE7EB; */
+  background: #FFE7EB; 
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  width: 282px; /* Set sidebar width to 282px */
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 40; 
+  transform: translateX(100%); 
+  transition: transform 0.3s ease-in-out;
+  padding: 0; 
+  display: flex; 
+  flex-direction: column;
+   /* Change the background here to var(--light-pink-bg) or #FFE7EB */
+   background: var(--light-pink-bg); /* Use the defined variable */
+   position: fixed; 
+   top: 0; 
+   right: 0; 
+   width: 282px; 
+   /* ... (rest of the mobile-sidebar styles) ... */
+}
+
+.sidebar-logo { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 20px; 
+    padding-bottom: 10px; 
+    /* Changed background to match sidebar or keep transparent */
+    background-color: transparent; 
+    position: relative;
+    height: 70px;
+    /* Added fixed border to define the logo area height */
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-logo img { 
+    /* Set company logo size */
+    width: 125.61px; 
+    height: 34.62px; 
+    object-fit: contain;
+}
+
+.business-tagline {
+    font-size: 0.7rem; 
+    color: #343444; 
+    font-weight: 400;
+    position: absolute;
+    left: 20px; 
+    top: 40px;
+}
+
+.close-btn { 
+    position: absolute; 
+    top: 15px; 
+    right: 20px; 
+    font-size: 2.2rem; 
+    font-weight: 300; 
+    cursor: pointer; 
+    color: var(--primary-red); 
+    line-height: 1;
+}
+
+/* New wrapper to contain the navigation options and the button within 462px */
+.sidebar-nav-content {
+    height: 462px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    
+    /* SET 40PX PADDING ABOVE HOME LINK */
+    padding-top: 40px; 
+    
+    padding-bottom: 15px; 
+    box-sizing: border-box;
+}
+
+.mobile-sidebar a {
+  /* Retained padding for spacing */
+  padding: 10px 20px; 
+  text-decoration: none; 
+  font-weight: 500; 
+  font-size: 1.05rem; 
+  transition: color 0.1s;
+  display: flex; 
+  align-items: center; 
+  gap: 15px; 
+  color: #343444; 
+}
+
+/* Apply image styles to the new img element with class .nav-icon */
+.mobile-sidebar img.nav-icon {
+    /* The user set these inline styles, moving them to CSS for consistency */
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    
+}
+
+/* Style for the active/Home link to match the image's red text */
+.mobile-sidebar a:first-of-type { 
+  color: var(--primary-red); 
+  /* CHANGE THIS LINE: Set the background to match the sidebar's pink */
+  background-color: var(--light-pink-bg); 
+  /* OR use the exact pink code: background-color: #FFE7EB; */
+  font-weight: 600;
+}
+
+.mobile-sidebar a:hover { 
+    background: rgba(237, 54, 85, 0.05);
+    color: var(--primary-red);
+}
+
+/* REMOVED: Old Icon Container Styling for Custom Images (home-icon, about-icon, etc.) */
+
+/* Style for the 'CONTACT US' button */
+.sidebar-cta {
+    /* Auto margins keep it centered and space is controlled by the .sidebar-nav-content flex property */
+    margin: 20px auto 0 auto; /* Added a small top margin for separation */
+    width: 80%; 
+    padding: 18px 20px; 
+    font-size: 1.0rem; 
+    font-weight: 700;
+    border-radius: 40px; 
+    box-shadow: 0 8px 20px rgba(237, 54, 85, 0.5); 
+    position: static; 
+}
+
+
+.sidebar-overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.5); z-index: 39; 
+    visibility: hidden; opacity: 0; transition: opacity 0.3s; 
+}
+
+#menu-checkbox:checked ~ .mobile-sidebar { transform: translateX(0); }
+#menu-checkbox:checked ~ .sidebar-overlay { visibility: visible; opacity: 1; }
+
+/* --- Responsive Adjustments --- */
+
+/* Tablet (≤980px) */
+@media (max-width: 980px) {
+  .hero {
+    flex-direction: column; align-items: center; padding: 40px 5% 0; min-height: auto;
+  }
+
+  .hero-content { max-width: 100%; width: 100%; padding: 0; text-align: center; align-self: center; }
+  .hero-visuals { position: relative; right: auto; bottom: 0; width: 100%; max-width: 420px; margin: 0 auto; display: flex; justify-content: center; align-items: flex-end; }
+  .rating-box { bottom: 30%; left: 5%; }
+  .resume-count { bottom: 15%; right: 5%; left: auto; }
+  .desktop-nav-links { display: none !important; }
+  .menu-toggle { display: block; }
+  header { padding: 15px 20px; justify-content: space-between; }
+  .hero-title, .hero-description { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-buttons { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; }
+  .hero-buttons button { margin-right: 0 !important; width: 90%; max-width: 300px; }
+  .features-list { gap: 15px; }
+  .feature-item { width: 45%; }
+}
+
+/* Mobile (≤550px) */
+@media (max-width: 550px) {
+  .hero-title { font-size: 1.8rem; }
+  .hero-visuals { position: relative; bottom: 0; margin-top: 30px; max-width: 85vw; display: flex; justify-content: center; align-items: flex-end; }
+  .rating-box { position: absolute !important; bottom: 33% !important; left: 5% !important; width: 40% !important; height: auto !important; padding: 3vw 4vw; z-index: 20 !important; display: flex; align-items: center; border-radius: 1em; }
+  .rating-score-img { width: 18%; height: auto; }
+  .rating-stars-img { width: 40%; height: auto; }
+  .rating-details span { font-size: 0.8rem; }
+  .resume-count { position: absolute !important; bottom: 10% !important; right: 5% !important; left: auto !important; width: 45% !important; height: auto !important; padding: 3vw 4vw; z-index: 20 !important; display: flex; align-items: center; gap: 4vw; border-radius: 1em; }
+  #cap { width: 15%; height: auto; }
+  .count-number { font-size: 1.1rem; }
+  .count-label { font-size: 0.7rem; }
+  .hero-image img { width: 100%; }
+  .features h2 { font-size: 1.5rem; }
+  .feature-item { width: 90%; }
+}
+
+/* Extra small mobile (≤375px) */
+@media (max-width: 375px) {
+  .rating-box { bottom: 35% !important; left: 4% !important; width: 42% !important; padding: 3.5vw 4vw; }
+  .rating-score-img { width: 20%; }
+  .rating-stars-img { width: 45%; }
+  .resume-count { bottom: 8% !important; right: 5% !important; width: 48% !important; padding: 4vw 5vw; gap: 3vw; }
+  #cap { width: 16%; }
+  .count-number { font-size: 1.2rem; }
+  .count-label { font-size: 0.65rem; }
+}
